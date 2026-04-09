@@ -43,27 +43,40 @@
 ## 📁 项目结构
 ```
 E-commerce_test/
-├── common/ # 公共模块
-│ ├── api_client.py # HTTP 客户端封装
-│ ├── database.py # SQLite 数据库
-│ ├── environment.py # 环境管理
-│ └── ...
-├── config/ # 配置文件
-│ ├── environments.yaml # 环境配置
-│ └── public_apis.yaml # 公开 API 配置
-├── testcases/ # 测试用例
-│ ├── business/ # 业务测试
-│ │ ├── test_user.py
-│ │ ├── test_product.py
-│ │ ├── test_cart.py
-│ │ └── test_order.py
-│ └── environments/ # 环境测试
-│ ├── test_jsonplaceholder.py
-│ └── test_dummyjson.py
-├── reports/ # Allure 报告
-├── mock_server.py # Mock 服务器
-├── switch_env.py # 环境切换脚本
-└── requirements.txt
+├── .github/                   # CI/CD 配置
+│   └── workflows/
+│       └── test.yml
+├── common/                    # 公共模块
+│   ├── __init__.py
+│   ├── api_client.py         # HTTP 客户端封装
+│   ├── assert_helper.py      # 断言辅助
+│   ├── database.py           # SQLite 数据库
+│   ├── db_helper.py          # 数据库验证
+│   ├── environment.py        # 环境管理
+│   └── logger.py             # 日志模块
+├── config/                    # 配置文件
+│   ├── environments.yaml     # 环境配置
+│   └── public_apis.yaml      # 公开 API 配置
+├── testcases/                 # 测试用例
+│   ├── business/             # 业务测试
+│   │   ├── test_user.py
+│   │   ├── test_product.py
+│   │   ├── test_cart.py
+│   │   └── test_order.py
+│   ├── environments/          # 环境测试
+│   │   ├── test_jsonplaceholder.py
+│   │   └── test_dummyjson.py
+│   └── conftest.py
+├── data/                      # 测试数据
+│   └── test_data.yaml
+├── reports/                   # Allure 报告
+├── logs/                      # 日志文件
+├── mock_server.py             # Mock 服务器
+├── switch_env.py              # 环境切换脚本
+├── test_environments.py       # 环境测试脚本
+├── pytest.ini
+├── requirements.txt
+└── README.md
 ```
 
 ## 🚀 快速开始
