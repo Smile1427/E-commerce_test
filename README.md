@@ -1,5 +1,9 @@
 # 🚀 E-commerce API 自动化测试框架
 
+[![CI](https://github.com/Smile1427/E-commerce_test/actions/workflows/test.yml/badge.svg)](https://github.com/Smile1427/E-commerce_test/actions/workflows/test.yml)
+[![Python Version](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue)](https://www.python.org/)
+[![Allure Report](https://img.shields.io/badge/Allure-Report-brightgreen)](https://smile1427.github.io/E-commerce_test/allure-report/)
+
 基于 **Python + Pytest + Allure** 的接口自动化测试框架，支持多环境切换、SQLite 数据库持久化、Mock 服务器。
 
 ## 📊 测试统计
