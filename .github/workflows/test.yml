@@ -24,14 +24,9 @@ jobs:
 
     - name: Run tests
       run: |
-        # 直接运行 pytest，服务器会由 conftest.py 自动管理
-        pytest testcases/business/ -v
-        pytest testcases/environments/ -v --ignore=testcases/environments/test_reqres.py
-
-    - name: Run tests with Allure
-      if: always()
-      run: |
-        pytest testcases/ -v --alluredir=./reports/allure_raw --ignore=testcases/environments/test_reqres.py || true
+        # pytest 会自动通过 conftest.py 启动 Mock 服务器
+        pytest testcases/business/ -v --alluredir=./reports/allure_raw || true
+        pytest testcases/environments/ -v --alluredir=./reports/allure_raw --ignore=testcases/environments/test_reqres.py || true
 
     - name: Upload Allure results
       uses: actions/upload-artifact@v4

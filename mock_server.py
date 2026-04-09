@@ -10,6 +10,10 @@ from functools import wraps
 from datetime import datetime, timedelta
 import logging
 from common.database import DatabaseManager as DB
+from common.database import ensure_database_initialized
+
+# 确保数据库已初始化（修复 CI 环境问题）
+ensure_database_initialized()
 
 # ==================== 初始化 ====================
 app = Flask(__name__)

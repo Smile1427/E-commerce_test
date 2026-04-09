@@ -356,6 +356,33 @@ class DatabaseManager:
             return cursor.fetchone() is not None
 
 
-# 初始化数据库
-init_database()
-init_test_data()
+def ensure_database_initialized():
+    """确保数据库已初始化（修复 CI 环境问题）"""
+    import os
+    import sys
+
+    db_path = "ecommerce.db"
+    logger.info(f"检查数据库: {os.path.abspath(db_path)}")
+
+    # 检查数据库文件是否存在
+    db_exists = os.path.exists(db_path)
+
+    try:
+        with get_db() as conn:
+            cursor = conn.cursor()
+            cursor.execute("SELECT COUNT(*) FROM users")
+            user_count = cursor.fetchone()[0]
+            logger.info(f"用户表记录数: {user_count}")
+
+            if user_count == 0:
+                logger.info("用户表为空，初始化测试数据...")
+                init_test_data()
+    except Exception as e:
+        logger.warning(f"数据库表可能不存在: {e}")
+        logger.info("执行完整初始化...")
+        init_database()
+        init_test_data()
+
+
+# 在模块导入时自动执行
+ensure_database_initialized()
