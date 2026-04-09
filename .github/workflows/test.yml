@@ -3,46 +3,30 @@ name: API Automation Tests
 on:
   push:
     branches: [ master, main ]
-  pull_request:
-    branches: [ master, main ]
   workflow_dispatch:
 
 jobs:
   test:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        python-version: ["3.11"]
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+    - uses: actions/checkout@v4
 
-    - name: Set up Python ${{ matrix.python-version }}
+    - name: Set up Python
       uses: actions/setup-python@v5
       with:
-        python-version: ${{ matrix.python-version }}
+        python-version: '3.11'
 
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Start Mock Server (background)
+    - name: Run tests (Mock server will be started by tests if needed)
       run: |
-        nohup python mock_server.py > mock_server.log 2>&1 &
-        sleep 3
-        # 验证服务器是否启动
-        curl -s http://localhost:5000/api/products || echo "Server not ready"
-
-    - name: Run business tests
-      run: |
-        pytest testcases/business/ -v --alluredir=./reports/allure_raw
-
-    - name: Run environment tests
-      run: |
-        pytest testcases/environments/ -v --alluredir=./reports/allure_raw --ignore=testcases/environments/test_reqres.py || true
+        # 如果测试需要 Mock 服务器，先启动
+        python mock_server.py &
+        sleep 5
+        pytest testcases/ -v --alluredir=./reports/allure_raw --ignore=testcases/environments/test_reqres.py
 
     - name: Upload Allure results
       uses: actions/upload-artifact@v4
@@ -50,21 +34,3 @@ jobs:
       with:
         name: allure-results
         path: reports/allure_raw
-
-    - name: Install Allure commandline
-      if: always()
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y allure
-
-    - name: Generate Allure Report
-      if: always()
-      run: |
-        allure generate ./reports/allure_raw -o ./reports/allure_html --clean
-
-    - name: Upload Allure Report
-      uses: actions/upload-artifact@v4
-      if: always()
-      with:
-        name: allure-report
-        path: reports/allure_html
