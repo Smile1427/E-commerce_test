@@ -1,0 +1,61 @@
+# config/environments.yaml
+# 多环境配置文件
+
+environments:
+  # ==================== 本地 Mock 环境 ====================
+  local:
+    name: "本地环境"
+    base_url: "http://localhost:5000"
+    timeout: 30
+    verify_ssl: false
+    description: "Mock服务器，用于本地开发和测试"
+    readonly: false
+    category: "开发环境"
+
+  # ==================== 真实公开 API 环境 ====================
+  jsonplaceholder:
+    name: "JSONPlaceholder"
+    base_url: "https://jsonplaceholder.typicode.com"
+    timeout: 30
+    verify_ssl: true
+    description: "免费的伪数据 REST API，用于测试"
+    readonly: false
+    category: "公开API"
+
+  dummyjson:
+    name: "DummyJSON"
+    base_url: "https://dummyjson.com"
+    timeout: 30
+    verify_ssl: true
+    description: "伪电商 API，包含商品、购物车、用户"
+    readonly: false
+    category: "公开API"
+
+  reqres:
+    name: "ReqRes"
+    base_url: "https://reqres.in"
+    timeout: 30
+    verify_ssl: true
+    description: "测试用 REST API（可能不稳定）"
+    readonly: false
+    category: "公开API"
+
+  # ==================== 自定义测试环境（需要时取消注释）====================
+  # dev:
+  #   name: "开发环境"
+  #   base_url: "https://your-dev-server.com"
+  #   timeout: 30
+  #   verify_ssl: true
+  #   description: "开发环境"
+  #   readonly: false
+  #
+  # test:
+  #   name: "测试环境"
+  #   base_url: "https://your-test-server.com"
+  #   timeout: 30
+  #   verify_ssl: true
+  #   description: "测试环境"
+  #   readonly: false
+
+# 当前激活的环境（可以通过环境变量 TEST_ENV 覆盖）
+active_environment: local

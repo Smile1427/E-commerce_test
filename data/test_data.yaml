@@ -1,0 +1,33 @@
+# data/test_data.yaml
+# 测试数据配置
+test_user:
+  username: testuser
+  password: Test123456
+
+vip_user:
+  username: vipuser
+  password: Vip123456
+
+invalid_users:
+  - username: testuser
+    password: wrong
+    expected_code: 401
+  - username: notexist
+    password: 123456
+    expected_code: 401
+
+products:
+  - id: 1
+    name: 小米14 Ultra
+    price: 6499
+  - id: 2
+    name: 华为 Mate 60 Pro
+    price: 6999
+
+addresses:
+  - name: 张三
+    phone: 13800138000
+    province: 广东省
+    city: 深圳市
+    district: 南山区
+    detail: 科技园1001号

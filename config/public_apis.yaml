@@ -1,0 +1,64 @@
+# config/public_apis.yaml
+# 免费公开 API 配置
+
+public_apis:
+  jsonplaceholder:
+    name: "JSONPlaceholder"
+    base_url: "https://jsonplaceholder.typicode.com"
+    timeout: 30
+    description: "免费的伪数据 REST API，用于测试"
+    endpoints:
+      posts: "/posts"
+      comments: "/comments"
+      users: "/users"
+      todos: "/todos"
+
+  reqres:
+    name: "ReqRes"
+    base_url: "https://reqres.in"
+    timeout: 30
+    description: "测试用的 REST API，支持模拟登录"
+    endpoints:
+      users: "/api/users"
+      login: "/api/login"
+      register: "/api/register"
+
+  dummyjson:
+    name: "DummyJSON"
+    base_url: "https://dummyjson.com"
+    timeout: 30
+    description: "伪电商 API，包含商品、购物车、用户"
+    endpoints:
+      products: "/products"
+      carts: "/carts"
+      users: "/users"
+      auth: "/auth/login"
+      quotes: "/quotes"
+
+  fakestore:
+    name: "FakeStore"
+    base_url: "https://fakestoreapi.com"
+    timeout: 30
+    description: "伪电商 API，用于测试电商功能"
+    endpoints:
+      products: "/products"
+      carts: "/carts"
+      users: "/users"
+      auth: "/auth/login"
+
+  catfacts:
+    name: "Cat Facts"
+    base_url: "https://catfact.ninja"
+    timeout: 30
+    description: "随机猫咪事实 API"
+    endpoints:
+      fact: "/fact"
+      facts: "/facts"
+
+  randomuser:
+    name: "Random User"
+    base_url: "https://randomuser.me"
+    timeout: 30
+    description: "随机用户生成 API"
+    endpoints:
+      users: "/api"

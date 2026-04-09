@@ -1,0 +1,137 @@
+# ====================
+# Python
+# ====================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+.eggs/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.manifest
+*.spec
+
+# ====================
+# 虚拟环境
+# ====================
+.venv/
+venv/
+ENV/
+env/
+.venv
+venv
+env/
+
+# ====================
+# 数据库文件
+# ====================
+*.db
+*.sqlite
+*.sqlite3
+ecommerce.db
+
+# ====================
+# 测试报告
+# ====================
+reports/
+allure-results/
+allure-report/
+allure_html/
+allure_raw/
+logs/
+*.log
+*.log.*
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# ====================
+# IDE 配置
+# ====================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.~*
+.project
+.pydevproject
+.settings/
+*.sublime-*
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ====================
+# Jupyter Notebook
+# ====================
+.ipynb_checkpoints/
+*.ipynb
+
+# ====================
+# 环境变量
+# ====================
+.env
+.env.local
+.env.*.local
+*.env
+
+# ====================
+# 配置文件（敏感信息）
+# ====================
+config/local.yaml
+config/secret.yaml
+*.secret.yaml
+
+# ====================
+# 临时文件
+# ====================
+*.tmp
+*.temp
+*.bak
+*.backup
+*.cache
+*.dump
+*.pid
+
+# ====================
+# 压缩文件
+# ====================
+*.zip
+*.tar
+*.tar.gz
+*.rar
+
+# ====================
+# Mock 服务器运行时文件
+# ====================
+*.pid
+*.sock
+
+# ====================
+# 操作系统
+# ====================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*.dll
+*.exe
